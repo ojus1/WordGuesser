@@ -1,0 +1,5 @@
+TRAIN:
+  min_mask_ratio: 0.3
+  max_mask_ratio: 0.5
+TOKENIZATION:
+  max_seq_length: 400
