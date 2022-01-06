@@ -3,6 +3,7 @@
 ## TLDR;
 
 Input: `("N_M_STE", "A greeting in South-East Asia, particularly India.")`
+
 Output: `NAMASTE`
 
 ## Approach

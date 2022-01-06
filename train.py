@@ -1,7 +1,7 @@
 import torch
 import pytorch_lightning as pl
 from core.config import cfg
-from core.model import GRUNet, loss_fn
+from core.model import Net, loss_fn
 from core.tokenizer import get_num_tokens_padding_idx, CharLevelTokenizer
 from core.WordDataModule import WordDataModule
 import os
@@ -87,7 +87,7 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 
 if __name__ == "__main__":
     num_tokens, padding_idx = get_num_tokens_padding_idx("./data/tokenizer.pth")
-    gru = GRUNet(num_tokens, padding_idx)
+    gru = Net(num_tokens, padding_idx)
 
     parser = ArgumentParser()
     parser.add_argument(

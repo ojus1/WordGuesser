@@ -1,10 +1,13 @@
-from core.model import GRUNet, loss_fn
+import sys
+
+sys.path.append(".")
+from core.model import Net, loss_fn
 import torch
 
 
 def test_shapes():
     inp = torch.randint(0, 100, (32, 128))
-    model = GRUNet(100, 0, embed_dim=64)
+    model = Net(100, 0, embed_dim=64)
 
     out = model(inp)
     out = out.argmax(dim=-1)
