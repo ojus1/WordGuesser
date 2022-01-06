@@ -119,6 +119,7 @@ if __name__ == "__main__":
         precision=16,
         stochastic_weight_avg=True,
         gpus=1,
+        val_check_interval=0.3,
         callbacks=[checkpointer],
     )
     trainer.fit(experiment, dm)
