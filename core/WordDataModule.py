@@ -33,8 +33,8 @@ class WordDataset(torch.utils.data.Dataset):
 
         one_hot_mask_ids = torch.zeros_like(tokens)
         one_hot_mask_ids[mask_ids] = 1
-        if label.shape[0] != 400:
-            print(one_hot_mask_ids.shape, label.shape, self.mode)
+        # if label.shape[0] != 400:
+        #     print(one_hot_mask_ids.shape, label.shape, self.mode)
         label = label.masked_fill(
             ~one_hot_mask_ids.bool(),
             self.tokenizer.tokens_to_ids[cfg.TOKENIZATION.pad_token],

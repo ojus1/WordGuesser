@@ -10,12 +10,12 @@ from argparse import ArgumentParser
 
 
 class Experiment(pl.LightningModule):
-    def __init__(self, model, padding_idx, args):
+    def __init__(self, model, padding_idx, num_tokens, cfg_=None):
         super().__init__()
 
         self.cfg = cfg
-        if not args.cfg is None:
-            self.cfg.merge_from_file(args.cfg)
+        if not cfg_ is None:
+            self.cfg.merge_from_file(cfg_)
         self.cfg.freeze()
         print(self.cfg)
 
@@ -101,7 +101,7 @@ if __name__ == "__main__":
     )
 
     script_args, _ = parser.parse_known_args()
-    # os.system(f"python3 build_tokenizer.py --dataset_csv_path {script_args.dataset_csv_path}")
+    os.system(f"python3 build_tokenizer.py --dataset_csv_path {script_args.dataset_csv_path}")
 
     parser = WordDataModule.add_argparse_args(parser)
     parser = pl.Trainer.add_argparse_args(parser)
@@ -111,11 +111,11 @@ if __name__ == "__main__":
     tokenizer = torch.load("./data/tokenizer.pth")
     dm = WordDataModule(tokenizer, script_args.dataset_csv_path)
 
-    experiment = Experiment(gru, padding_idx, args)
+    experiment = Experiment(gru, padding_idx, num_tokens, args.cfg)
     checkpointer = ModelCheckpoint(monitor="LOSS/val", mode="min")
     trainer = pl.Trainer.from_argparse_args(
         args,
-        max_epochs=300,
+        max_epochs=1000,
         precision=16,
         stochastic_weight_avg=True,
         gpus=1,

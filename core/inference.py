@@ -10,7 +10,8 @@ def inference(masked_word, description, tokenizer, model):
 
     cleaned_word = masked_word.replace(" ", "")
     cleaned_word = [c for c in cleaned_word]
-    for i in masked_idx:
-        decoded_char = tokenizer.ids_to_tokens[preds[i].item()]
+    for i in mask_idx:
+        decoded_char = tokenizer.ids_to_tokens[preds[i-1].item()]
         cleaned_word[i - 1] = decoded_char
-    return "".join(cleaned_word)
+    return "".join(cleaned_word).lower()
+
