@@ -23,4 +23,4 @@ for i in range(len(test)):
     rows.append((cleaned, masked_word, description))
 
 predicted = pd.DataFrame(rows, columns=["Predicted Word", "Masked", "Meaning"])
-predicted.to_csv("test_predictions.csv", index=False)
+predicted.to_csv("./data/test_predictions.csv", index=False)
