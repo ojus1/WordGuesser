@@ -59,8 +59,8 @@ http://127.0.0.1:5000/guess_word
 3. `tests` contains unit tests for modules in `core`
 4. `build_tokenizer.py` builds a character-level tokenizer for a given CSV.
 5. `clean_data.py` is used for cleaning the open-source dataset used.
-6. `app.py` is a simple gradio inference for inference with a trained model (included).
-7. `app.py` is a simple REST API (flask).
+6. `app_gradio.py` is a simple gradio inference for inference with a trained model (included).
+7. `app_rest.py` is a simple REST API (flask).
 8. `train.py` is the training script, uses PyTorch-Lightning, pass `--dataset_csv_path` argument to the script (works for the docker container as well).
 9. `docker_files` contain `Dockerfile`s for inference and training.
 10. `build_container.py` builds docker containers for inference_gradio, inference_rest, and inference_training. Example: `python3 build_container.py inference_gradio`.
