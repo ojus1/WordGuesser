@@ -26,7 +26,7 @@ class WordDataset(torch.utils.data.Dataset):
         else:
             seed = None
         tokens, mask_ids, label = self.tokenizer.encode(
-            word, description, mode=self.mode
+            word, description, mode=self.mode, seed=seed
         )
         tokens = torch.LongTensor(tokens)
         label = torch.LongTensor(label)
